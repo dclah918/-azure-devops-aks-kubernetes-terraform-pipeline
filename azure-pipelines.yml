@@ -22,10 +22,9 @@ stages:
           artifact: 'terraform-manifests-out'
           publishLocation: 'pipeline'
       - task: TerraformInstaller@0
-        inputs:
-          terraformVersion: '0.13.4'
         displayName: Terraform Install
-
+        inputs:
+          terraformVersion: 'latest'
       - task: TerraformCLI@0
         displayName: Terraform Init
         inputs:
@@ -43,4 +42,4 @@ stages:
         inputs:
           command: 'validate'
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
-          allowTelemetryCollection: false     
+          allowTelemetryCollection: false 
