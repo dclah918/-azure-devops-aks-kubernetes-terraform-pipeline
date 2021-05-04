@@ -22,21 +22,21 @@ stages:
           artifact: 'terraform-manifests-out'
           publishLocation: 'pipeline'
       - task: TerraformInstaller@0
-        displayName: Terraform Install
         inputs:
-          terraformVersion: latest
+          terraformVersion: 'latest'
       - task: TerraformCLI@0
-        displayName: Terraform Init
         inputs:
           command: 'init'
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
           backendType: 'azurerm'
           backendServiceArm: 'aksdemo1'
           backendAzureRmResourceGroupName: 'terraform-storage-rg'
+          backendAzureRmResourceGroupLocation: 'eastus'
           backendAzureRmStorageAccountName: 'terraformstatexlrwdrzs'
           backendAzureRmContainerName: 'tfstatefiles'
           backendAzureRmKey: 'aks-base.tfstate'
           allowTelemetryCollection: false
+
       - task: TerraformCLI@0
         displayName: Terraform Validate
         inputs:
