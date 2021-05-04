@@ -23,7 +23,7 @@ stages:
           publishLocation: 'pipeline'
       - task: TerraformInstaller@0
         inputs:
-          terraformVersion: 0.12.11
+          terraformVersion: '0.12.11'
         displayName: Terraform Install
 
       - task: TerraformCLI@0
